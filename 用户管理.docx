@@ -1,0 +1,63 @@
+实验  用户管理
+姓名:欧阳柳江     学号:11519120
+
+一 实验目的
+   1、熟悉linux操作。
+   2、熟悉vi、目录操作。
+   3、掌握用户管理命令，熟悉/etc/passwd、/etc/shadow等文件。
+二 实验任务
+1、分别用修改配置文件、命令行管理、图形化界面方式为自己添加一个用户，用户名为自己名字拼音，主目录为/usr/mytest，练习passwd命令l、u、d、n、x、w选项。最后分别用命令、修改配置文件删除用户，思考其差异。
+
+
+修改配置文件：
+添加一个用户ouyangliujiang
+创建用户的家目录/usr/mytest，并把用户启动文件也复制过去
+删除用户
+①修改/etc/passwd，添加用户记录
+打开shell，输入vi /etc/passwd
+
+按i进入编辑模式下，在最后一行添加
+ouyangliujiang:x:1000:1000::/usr/mytest:/bin/bash
+修改完毕后按esc -> ：->wq
+
+
+
+  ②在/etc/shadow中添加记录
+　　　计算从1970.1.1到现在的天数
+　　　命令echo $(date +”%s”)
+　　　bc
+　　　
+　　　
+　　　通过md5手动生成123456
+　　　命令openssl passwd -1 123456
+　　　
+　　　添加到/etc/shadow中
+　　　命令 vi /etc/shadow
+　　　
+　　　
+　③在/etc/group中添加用户组oylj
+　　　
+　　　
+　　　
+　④将家目录启动文件复制过去
+　在shell模式下输入
+　cp -r /etc/skel /usr/mytest
+　
+　更改用户权限
+　chown -r oylj:oylj /usr/mytest
+　
+
+以上就创建成功了，并且可以登录
+下面是删除用户
+⑤
+   
+   2、新建文件test，分别用字符、数字方式通过权限管理实现：收回所有用户的执行权限、收回属组用户和其他用户的写权限、赋予属组用户写权限、赋予文件属主执行权限、赋予属组用户和其他用户执行权限。
+
+   3、用useradd添加用户test1、test2以test1用户名登录xwindow（命令init 5），观察/home/test2文件夹显示状态
+修改test2权限，使得其对test1可用。
+
+
+三 操作方法
+
+
+四 结果
